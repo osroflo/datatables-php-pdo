@@ -1,23 +1,12 @@
-# Datatables PHP PDO (Server Side Script - Sample)
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Server Side Scripting - DEMO</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+</head>
+<body>
 
-This is a brief sample using the [DataTables plugin](https://datatables.net) in a server side scripting with PHP-PDO.
-
-I decided to start with this code sample because all similar samples code that I found were mixing the SQL query with the server side logic to return results. My main goal was to produce some kind of widget that passing a query can be capable to return results, paginate, sort and filter. Also, the most important thing: easy to integrate. This code needs a lot of improvement but is a good starting.
-
-Hopefully this can be useful for someone.
-
-
-
-
-
-## How to use
-
-
-1 - Setup front-end
-
-HTML
-```
-<table id="example" class="display" cellspacing="0" width="100%">
+    <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>username</th>
@@ -26,15 +15,10 @@ HTML
             </tr>
         </thead>
     </table>
-```
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 
-
-
-
-
-JS
-```
-<script>
+    <script>
         $(document).ready(function() {
             var table = $('#example').dataTable( {
                 processing: true,
@@ -80,38 +64,6 @@ JS
 
         } );
 
-```
-
-
-2 - Setup the backend
-```
-<?php
-    require_once('TableData.php');
-
-
-    // Query declaration
-    $query = array(
-        "from" => " FROM cc.user"
-        // "where" => " WHERE last_activity between  :start_date AND  :end_date ",
-        // "params" => array(
-        //         'start_date'=>'2015-03-18',
-        //         'end_date'=>'2016-03-18'
-        // )
-    );
-
-    // Instantiation
-    $dataTable = new TableData($query);
-    $dataTable->get();
-
-    // Show the raw query
-    error_log($dataTable->getRawSql());
-```
-
-
-###### For more information check demo.html
-
-
-
-
-## License
-Free
+    </script>
+</body>
+</html>
