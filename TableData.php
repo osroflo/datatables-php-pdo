@@ -72,9 +72,9 @@ class TableData {
 
         try {
             $host       = 'localhost';
-            $database   = 'vccp2';
+            $database   = 'database';
             $user       = 'postgres';
-            $passwd     = '';
+            $passwd     = '123';
 
             // Conn
             $this->conn = new PDO('pgsql:host='.$host.';dbname='.$database, $user, $passwd);
