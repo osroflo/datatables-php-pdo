@@ -240,9 +240,9 @@ class TableData {
         foreach ($results as $row) {
             $nestedData = array();
 
-            // Get columns
-            foreach ($this->columns as $column) {
-                $nestedData[] = $row[$column];
+            // Get column's index
+            foreach ($this->columns as $index => $value) {
+                $nestedData[] = $row[$index];
             }
 
             $data[] = $nestedData;
