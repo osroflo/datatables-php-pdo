@@ -129,8 +129,15 @@ class TableData {
 
             // Get searchable fields from data tables plugin
             foreach ($this->searchable as $column) {
-                $searchable_columns_statements[] = " $column ilike :$column ";
-                $this->params[$column] = trim("%" . $this->search_value . "%");
+                /**
+                 * Replace dot by underscore, in case a column name is table.field
+                 * (e.g: users.name). This is needed to avoid an error during the
+                 * binding process
+                 */
+                $column_formatted = str_replace(".", "_", $column);
+
+                $searchable_columns_statements[] = " $column ilike :$column_formatted ";
+                $this->params[$column_formatted] = trim("%" . $this->search_value . "%");
             }
 
             if( count($searchable_columns_statements) > 0 ){
